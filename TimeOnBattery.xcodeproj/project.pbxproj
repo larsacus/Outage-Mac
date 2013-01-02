@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C131693C3F300FC0DD5 /* Cocoa.framework */; };
+		467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */; };
+		467C4C201693C3F300FC0DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C1F1693C3F300FC0DD5 /* main.m */; };
+		467C4C241693C3F300FC0DD5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C221693C3F300FC0DD5 /* Credits.rtf */; };
+		467C4C271693C3F300FC0DD5 /* TOLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */; };
+		467C4C2A1693C3F300FC0DD5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C281693C3F300FC0DD5 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeOnBattery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		467C4C171693C3F300FC0DD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		467C4C181693C3F300FC0DD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		467C4C1B1693C3F300FC0DD5 /* TimeOnBattery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimeOnBattery-Info.plist"; sourceTree = "<group>"; };
+		467C4C1D1693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		467C4C1F1693C3F300FC0DD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		467C4C211693C3F300FC0DD5 /* TimeOnBattery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimeOnBattery-Prefix.pch"; sourceTree = "<group>"; };
+		467C4C231693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOLAppDelegate.h; sourceTree = "<group>"; };
+		467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOLAppDelegate.m; sourceTree = "<group>"; };
+		467C4C291693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		467C4C0C1693C3F300FC0DD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		467C4C041693C3F300FC0DD5 = {
+			isa = PBXGroup;
+			children = (
+				467C4C191693C3F300FC0DD5 /* TimeOnBattery */,
+				467C4C121693C3F300FC0DD5 /* Frameworks */,
+				467C4C101693C3F300FC0DD5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		467C4C101693C3F300FC0DD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		467C4C121693C3F300FC0DD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C131693C3F300FC0DD5 /* Cocoa.framework */,
+				467C4C151693C3F300FC0DD5 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		467C4C151693C3F300FC0DD5 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C161693C3F300FC0DD5 /* AppKit.framework */,
+				467C4C171693C3F300FC0DD5 /* CoreData.framework */,
+				467C4C181693C3F300FC0DD5 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		467C4C191693C3F300FC0DD5 /* TimeOnBattery */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */,
+				467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */,
+				467C4C281693C3F300FC0DD5 /* MainMenu.xib */,
+				467C4C1A1693C3F300FC0DD5 /* Supporting Files */,
+			);
+			path = TimeOnBattery;
+			sourceTree = "<group>";
+		};
+		467C4C1A1693C3F300FC0DD5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C1B1693C3F300FC0DD5 /* TimeOnBattery-Info.plist */,
+				467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */,
+				467C4C1F1693C3F300FC0DD5 /* main.m */,
+				467C4C211693C3F300FC0DD5 /* TimeOnBattery-Prefix.pch */,
+				467C4C221693C3F300FC0DD5 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		467C4C0E1693C3F300FC0DD5 /* TimeOnBattery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "TimeOnBattery" */;
+			buildPhases = (
+				467C4C0B1693C3F300FC0DD5 /* Sources */,
+				467C4C0C1693C3F300FC0DD5 /* Frameworks */,
+				467C4C0D1693C3F300FC0DD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeOnBattery;
+			productName = TimeOnBattery;
+			productReference = 467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		467C4C061693C3F300FC0DD5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TOL;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Lars Anderson";
+			};
+			buildConfigurationList = 467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "TimeOnBattery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 467C4C041693C3F300FC0DD5;
+			productRefGroup = 467C4C101693C3F300FC0DD5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				467C4C0E1693C3F300FC0DD5 /* TimeOnBattery */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		467C4C0D1693C3F300FC0DD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */,
+				467C4C241693C3F300FC0DD5 /* Credits.rtf in Resources */,
+				467C4C2A1693C3F300FC0DD5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		467C4C0B1693C3F300FC0DD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				467C4C201693C3F300FC0DD5 /* main.m in Sources */,
+				467C4C271693C3F300FC0DD5 /* TOLAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				467C4C1D1693C3F300FC0DD5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		467C4C221693C3F300FC0DD5 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				467C4C231693C3F300FC0DD5 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		467C4C281693C3F300FC0DD5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				467C4C291693C3F300FC0DD5 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		467C4C2B1693C3F300FC0DD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		467C4C2C1693C3F300FC0DD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		467C4C2E1693C3F300FC0DD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TimeOnBattery/TimeOnBattery-Prefix.pch";
+				INFOPLIST_FILE = "TimeOnBattery/TimeOnBattery-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		467C4C2F1693C3F300FC0DD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TimeOnBattery/TimeOnBattery-Prefix.pch";
+				INFOPLIST_FILE = "TimeOnBattery/TimeOnBattery-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "TimeOnBattery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				467C4C2B1693C3F300FC0DD5 /* Debug */,
+				467C4C2C1693C3F300FC0DD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "TimeOnBattery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				467C4C2E1693C3F300FC0DD5 /* Debug */,
+				467C4C2F1693C3F300FC0DD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 467C4C061693C3F300FC0DD5 /* Project object */;
+}
