@@ -1,0 +1,3 @@
+[submodule "Vendor/TOLPowerSource"]
+	path = Vendor/TOLPowerSource
+	url = https://github.com/larsacus/TOLPowerSource.git

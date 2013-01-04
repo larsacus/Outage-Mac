@@ -1,6 +1,6 @@
 //
 //  main.m
-//  TimeOnBattery
+//  Outage
 //
 //  Created by Lars Anderson on 1/1/13.
 //  Copyright (c) 2013 Lars Anderson. All rights reserved.

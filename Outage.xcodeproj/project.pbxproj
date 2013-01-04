@@ -13,22 +13,27 @@
 		467C4C241693C3F300FC0DD5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C221693C3F300FC0DD5 /* Credits.rtf */; };
 		467C4C271693C3F300FC0DD5 /* TOLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */; };
 		467C4C2A1693C3F300FC0DD5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C281693C3F300FC0DD5 /* MainMenu.xib */; };
+		467C4C311693C80500FC0DD5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C301693C80500FC0DD5 /* IOKit.framework */; };
+		467C4C4116968BD000FC0DD5 /* TOLPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C4016968BD000FC0DD5 /* TOLPowerSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeOnBattery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		467C4C0F1693C3F300FC0DD5 /* Outage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Outage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		467C4C171693C3F300FC0DD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		467C4C181693C3F300FC0DD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		467C4C1B1693C3F300FC0DD5 /* TimeOnBattery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimeOnBattery-Info.plist"; sourceTree = "<group>"; };
+		467C4C1B1693C3F300FC0DD5 /* Outage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Outage-Info.plist"; sourceTree = "<group>"; };
 		467C4C1D1693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		467C4C1F1693C3F300FC0DD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		467C4C211693C3F300FC0DD5 /* TimeOnBattery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimeOnBattery-Prefix.pch"; sourceTree = "<group>"; };
+		467C4C211693C3F300FC0DD5 /* Outage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Outage-Prefix.pch"; sourceTree = "<group>"; };
 		467C4C231693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOLAppDelegate.h; sourceTree = "<group>"; };
 		467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOLAppDelegate.m; sourceTree = "<group>"; };
 		467C4C291693C3F300FC0DD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		467C4C301693C80500FC0DD5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		467C4C3F16968BD000FC0DD5 /* TOLPowerSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLPowerSource.h; sourceTree = "<group>"; };
+		467C4C4016968BD000FC0DD5 /* TOLPowerSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLPowerSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467C4C311693C80500FC0DD5 /* IOKit.framework in Frameworks */,
 				467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +52,8 @@
 		467C4C041693C3F300FC0DD5 = {
 			isa = PBXGroup;
 			children = (
-				467C4C191693C3F300FC0DD5 /* TimeOnBattery */,
+				467C4C3E16968BD000FC0DD5 /* TOLPowerSource */,
+				467C4C191693C3F300FC0DD5 /* Outage */,
 				467C4C121693C3F300FC0DD5 /* Frameworks */,
 				467C4C101693C3F300FC0DD5 /* Products */,
 			);
@@ -55,7 +62,7 @@
 		467C4C101693C3F300FC0DD5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */,
+				467C4C0F1693C3F300FC0DD5 /* Outage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +70,7 @@
 		467C4C121693C3F300FC0DD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				467C4C301693C80500FC0DD5 /* IOKit.framework */,
 				467C4C131693C3F300FC0DD5 /* Cocoa.framework */,
 				467C4C151693C3F300FC0DD5 /* Other Frameworks */,
 			);
@@ -79,7 +87,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		467C4C191693C3F300FC0DD5 /* TimeOnBattery */ = {
+		467C4C191693C3F300FC0DD5 /* Outage */ = {
 			isa = PBXGroup;
 			children = (
 				467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */,
@@ -87,27 +95,37 @@
 				467C4C281693C3F300FC0DD5 /* MainMenu.xib */,
 				467C4C1A1693C3F300FC0DD5 /* Supporting Files */,
 			);
-			path = TimeOnBattery;
+			path = Outage;
 			sourceTree = "<group>";
 		};
 		467C4C1A1693C3F300FC0DD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				467C4C1B1693C3F300FC0DD5 /* TimeOnBattery-Info.plist */,
+				467C4C1B1693C3F300FC0DD5 /* Outage-Info.plist */,
 				467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */,
 				467C4C1F1693C3F300FC0DD5 /* main.m */,
-				467C4C211693C3F300FC0DD5 /* TimeOnBattery-Prefix.pch */,
+				467C4C211693C3F300FC0DD5 /* Outage-Prefix.pch */,
 				467C4C221693C3F300FC0DD5 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		467C4C3E16968BD000FC0DD5 /* TOLPowerSource */ = {
+			isa = PBXGroup;
+			children = (
+				467C4C3F16968BD000FC0DD5 /* TOLPowerSource.h */,
+				467C4C4016968BD000FC0DD5 /* TOLPowerSource.m */,
+			);
+			name = TOLPowerSource;
+			path = Vendor/TOLPowerSource/Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		467C4C0E1693C3F300FC0DD5 /* TimeOnBattery */ = {
+		467C4C0E1693C3F300FC0DD5 /* Outage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "TimeOnBattery" */;
+			buildConfigurationList = 467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "Outage" */;
 			buildPhases = (
 				467C4C0B1693C3F300FC0DD5 /* Sources */,
 				467C4C0C1693C3F300FC0DD5 /* Frameworks */,
@@ -117,9 +135,9 @@
 			);
 			dependencies = (
 			);
-			name = TimeOnBattery;
-			productName = TimeOnBattery;
-			productReference = 467C4C0F1693C3F300FC0DD5 /* TimeOnBattery.app */;
+			name = Outage;
+			productName = Outage;
+			productReference = 467C4C0F1693C3F300FC0DD5 /* Outage.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +150,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Lars Anderson";
 			};
-			buildConfigurationList = 467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "TimeOnBattery" */;
+			buildConfigurationList = 467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "Outage" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -144,7 +162,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				467C4C0E1693C3F300FC0DD5 /* TimeOnBattery */,
+				467C4C0E1693C3F300FC0DD5 /* Outage */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +187,7 @@
 			files = (
 				467C4C201693C3F300FC0DD5 /* main.m in Sources */,
 				467C4C271693C3F300FC0DD5 /* TOLAppDelegate.m in Sources */,
+				467C4C4116968BD000FC0DD5 /* TOLPowerSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,9 +279,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TimeOnBattery/TimeOnBattery-Prefix.pch";
-				INFOPLIST_FILE = "TimeOnBattery/TimeOnBattery-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
+				INFOPLIST_FILE = "Outage/Outage-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Outage;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -272,9 +292,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TimeOnBattery/TimeOnBattery-Prefix.pch";
-				INFOPLIST_FILE = "TimeOnBattery/TimeOnBattery-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
+				INFOPLIST_FILE = "Outage/Outage-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Outage;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -282,7 +303,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "TimeOnBattery" */ = {
+		467C4C091693C3F300FC0DD5 /* Build configuration list for PBXProject "Outage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				467C4C2B1693C3F300FC0DD5 /* Debug */,
@@ -291,13 +312,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "TimeOnBattery" */ = {
+		467C4C2D1693C3F300FC0DD5 /* Build configuration list for PBXNativeTarget "Outage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				467C4C2E1693C3F300FC0DD5 /* Debug */,
 				467C4C2F1693C3F300FC0DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
