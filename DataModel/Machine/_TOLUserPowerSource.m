@@ -4,6 +4,7 @@
 #import "_TOLUserPowerSource.h"
 
 const struct TOLUserPowerSourceAttributes TOLUserPowerSourceAttributes = {
+	.name = @"name",
 	.serialNumber = @"serialNumber",
 	.timeOnBattery = @"timeOnBattery",
 	.transportType = @"transportType",
@@ -11,6 +12,7 @@ const struct TOLUserPowerSourceAttributes TOLUserPowerSourceAttributes = {
 };
 
 const struct TOLUserPowerSourceRelationships TOLUserPowerSourceRelationships = {
+	.batterySessions = @"batterySessions",
 };
 
 const struct TOLUserPowerSourceFetchedProperties TOLUserPowerSourceFetchedProperties = {
@@ -57,6 +59,13 @@ const struct TOLUserPowerSourceFetchedProperties TOLUserPowerSourceFetchedProper
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic name;
+
+
 
 
 
@@ -145,6 +154,19 @@ const struct TOLUserPowerSourceFetchedProperties TOLUserPowerSourceFetchedProper
 
 
 
+
+@dynamic batterySessions;
+
+	
+- (NSMutableSet*)batterySessionsSet {
+	[self willAccessValueForKey:@"batterySessions"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"batterySessions"];
+  
+	[self didAccessValueForKey:@"batterySessions"];
+	return result;
+}
+	
 
 
 

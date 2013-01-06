@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BatterySession" representedClassName="TOLBatterySession" syncable="YES">
+        <attribute name="beginCapacity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="beginTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endCapacity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="wasInturrupted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="powerSource" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PowerSource" inverseName="batterySessions" inverseEntity="PowerSource" syncable="YES"/>
+    </entity>
     <entity name="PowerSource" representedClassName="TOLUserPowerSource" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeOnBattery" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="transportType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="batterySessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BatterySession" inverseName="powerSource" inverseEntity="BatterySession" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PowerSource" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="PowerSource" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="BatterySession" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

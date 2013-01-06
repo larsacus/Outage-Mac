@@ -9,11 +9,14 @@
 #import "TOLAppDelegate.h"
 #import <IOKit/ps/IOPowerSources.h>
 #import "TOLPowerSource.h"
+#import "TOLBatterySession.h"
 
 @interface TOLAppDelegate ()
 
-@property (nonatomic) NSInteger secondsOnBattery;
-@property (strong, nonatomic) NSDate *lostPowerDate;
+@property (strong, nonatomic) TOLBatterySession *currentBatterySession;
+
+- (NSString *)timeStringFromSeconds:(NSInteger)seconds;
+- (NSInteger)totalSecondsOnBatteryForAllSessions;
 
 @end
 
@@ -23,57 +26,79 @@ void powerChanged(void *context) {
     TOLAppDelegate *self = (__bridge TOLAppDelegate *)(context);
     
     if (([TOLPowerSource isOnBatteryPower] == YES) &&
-        (self.lostPowerDate == nil)) {
-        self.lostPowerDate = [NSDate date];
+        (self.currentBatterySession == nil)) {
+        self.currentBatterySession = [TOLBatterySession MR_createEntity];
+        self.currentBatterySession.beginTime = [NSDate date];
         
-        NSLog(@"AC power lost beginning at %@", self.lostPowerDate);
+        TOLPowerSource *providingPowerSource = [TOLPowerSource providingPowerSource];
+        self.currentBatterySession.powerSource = [TOLUserPowerSource userPowerSourceFromPowerSource:providingPowerSource];
+        self.currentBatterySession.beginCapacityValue = providingPowerSource.batteryPercentage;
+        
+        NSLog(@"AC power lost beginning at %@", self.currentBatterySession.beginTime);
     }
-    else if (self.lostPowerDate != nil) {
-        NSInteger secondsThisSession = [[NSDate date] timeIntervalSinceDate:self.lostPowerDate];
+    else if (self.currentBatterySession != nil) {
+        NSDate *endDate = [NSDate date];
+        self.currentBatterySession.endTime = endDate;
+        
+        NSInteger secondsThisSession = [endDate timeIntervalSinceDate:self.currentBatterySession.beginTime];
+        
+        TOLPowerSource *sessionPowerSource = [TOLUserPowerSource powerSourceFromUserPowerSource:self.currentBatterySession.powerSource];
+        self.currentBatterySession.endCapacityValue = sessionPowerSource.batteryPercentage;
         
         NSLog(@"AC power resumed. Battery session lasted %li seconds.", secondsThisSession);
         
-        NSDate *modifiedDate = [self.lostPowerDate dateByAddingTimeInterval:-self.secondsOnBattery];
+        self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
         
-        self.secondsOnBattery += secondsThisSession;
+        //TODO:save incomplete sessions
+        [self.currentBatterySession.managedObjectContext MR_save];
         
-        NSUInteger desiredComponents = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-        NSDateComponents *elapsedTimeUnits = [[NSCalendar currentCalendar] components:desiredComponents
-                                                                             fromDate:modifiedDate
-                                                                               toDate:[NSDate date]
-                                                                              options:0];
-        
-        NSString *timeOnBattery = [NSString stringWithFormat:@"%0.2li:%0.2li:%0.2li", elapsedTimeUnits.hour, elapsedTimeUnits.minute, elapsedTimeUnits.second];
-        self.timeOnBatteryLabel.stringValue = timeOnBattery;
-        
-        self.lostPowerDate = nil;
+        self.currentBatterySession = nil;
     }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    [self.timeRemainingIndicator setFloatValue:0.f];
+    [MagicalRecord setupAutoMigratingCoreDataStack];
     
     self.timeRemainingIndicator.floatValue = [[TOLPowerSource upsBatterySource] batteryPercentage]*100.f;
-    self.timeOnBatteryLabel.stringValue = @"00:00:00";
     
-    NSArray *allPowerSources = [TOLPowerSource allPowerSources];
-    NSLog(@"%@", allPowerSources);
-    
-    for (TOLPowerSource *powerSource in allPowerSources) {
-        TOLUserPowerSource *userPowerSource = [TOLUserPowerSource MR_findFirstByAttribute:@"serialNumber" withValue:powerSource.hardwareSerialNumber];
-        
-        if (userPowerSource == nil) {
-            userPowerSource = [TOLUserPowerSource userPowerSourceFromPowerSource:powerSource];
-        }
-    }
+    NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
+    self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:secondsOnBattery];
     
     CFRunLoopSourceRef loop = IOPSNotificationCreateRunLoopSource(powerChanged, (__bridge void *)(self));
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode);
     CFRelease(loop);
 }
 
+- (NSString *)timeStringFromSeconds:(NSInteger)seconds{
+    NSDate *modifiedDate = [[NSDate date] dateByAddingTimeInterval:-seconds];
+    NSUInteger desiredComponents = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *elapsedTimeUnits = [[NSCalendar currentCalendar] components:desiredComponents
+                                                                         fromDate:modifiedDate
+                                                                           toDate:[NSDate date]
+                                                                          options:0];
+    
+    NSString *timeOnBattery = [NSString stringWithFormat:@"%0.2li:%0.2li:%0.2li", elapsedTimeUnits.hour, elapsedTimeUnits.minute, elapsedTimeUnits.second];
+    
+    return timeOnBattery;
+}
 
+- (NSInteger)totalSecondsOnBatteryForAllSessions{
+    NSInteger secondsOnBattery = 0;
+    
+    NSArray *allBatterySessions = [TOLBatterySession MR_findAll];
+    for (TOLBatterySession *batterySession in allBatterySessions) {
+        NSInteger secondsThisSession = [batterySession.endTime timeIntervalSinceDate:batterySession.beginTime];
+        
+        secondsOnBattery += secondsThisSession;
+    }
+    
+    return secondsOnBattery;
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification{
+    [MagicalRecord cleanUp];
+}
 
 @end

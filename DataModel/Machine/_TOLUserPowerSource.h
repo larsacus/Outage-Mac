@@ -5,6 +5,7 @@
 
 
 extern const struct TOLUserPowerSourceAttributes {
+	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *serialNumber;
 	__unsafe_unretained NSString *timeOnBattery;
 	__unsafe_unretained NSString *transportType;
@@ -12,10 +13,13 @@ extern const struct TOLUserPowerSourceAttributes {
 } TOLUserPowerSourceAttributes;
 
 extern const struct TOLUserPowerSourceRelationships {
+	__unsafe_unretained NSString *batterySessions;
 } TOLUserPowerSourceRelationships;
 
 extern const struct TOLUserPowerSourceFetchedProperties {
 } TOLUserPowerSourceFetchedProperties;
+
+@class TOLBatterySession;
 
 
 
@@ -31,6 +35,14 @@ extern const struct TOLUserPowerSourceFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TOLUserPowerSourceID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* name;
+
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -80,14 +92,32 @@ extern const struct TOLUserPowerSourceFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* batterySessions;
+
+- (NSMutableSet*)batterySessionsSet;
+
+
+
+
 
 @end
 
 @interface _TOLUserPowerSource (CoreDataGeneratedAccessors)
 
+- (void)addBatterySessions:(NSSet*)value_;
+- (void)removeBatterySessions:(NSSet*)value_;
+- (void)addBatterySessionsObject:(TOLBatterySession*)value_;
+- (void)removeBatterySessionsObject:(TOLBatterySession*)value_;
+
 @end
 
 @interface _TOLUserPowerSource (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveSerialNumber;
@@ -121,6 +151,11 @@ extern const struct TOLUserPowerSourceFetchedProperties {
 - (void)setPrimitiveTypeValue:(int32_t)value_;
 
 
+
+
+
+- (NSMutableSet*)primitiveBatterySessions;
+- (void)setPrimitiveBatterySessions:(NSMutableSet*)value;
 
 
 @end

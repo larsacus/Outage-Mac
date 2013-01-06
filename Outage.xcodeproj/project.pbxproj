@@ -36,6 +36,8 @@
 		460F301916993B190024403E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 460F301716993B190024403E /* DataModel.xcdatamodeld */; };
 		460F302116993C3F0024403E /* TOLUserPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F301D16993C3F0024403E /* TOLUserPowerSource.m */; };
 		460F302216993C3F0024403E /* _TOLUserPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F302016993C3F0024403E /* _TOLUserPowerSource.m */; };
+		460F3026169A1FB10024403E /* TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3025169A1FB10024403E /* TOLBatterySession.m */; };
+		460F3029169A1FC40024403E /* _TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3028169A1FC40024403E /* _TOLBatterySession.m */; };
 		467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C131693C3F300FC0DD5 /* Cocoa.framework */; };
 		467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */; };
 		467C4C201693C3F300FC0DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C1F1693C3F300FC0DD5 /* main.m */; };
@@ -107,6 +109,11 @@
 		460F301F16993C3F0024403E /* _TOLUserPowerSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TOLUserPowerSource.h; sourceTree = "<group>"; };
 		460F302016993C3F0024403E /* _TOLUserPowerSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TOLUserPowerSource.m; sourceTree = "<group>"; };
 		460F302316993D070024403E /* DataModelHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModelHeaders.h; sourceTree = "<group>"; };
+		460F3024169A1FB10024403E /* TOLBatterySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLBatterySession.h; sourceTree = "<group>"; };
+		460F3025169A1FB10024403E /* TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLBatterySession.m; sourceTree = "<group>"; };
+		460F3027169A1FC40024403E /* _TOLBatterySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TOLBatterySession.h; sourceTree = "<group>"; };
+		460F3028169A1FC40024403E /* _TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TOLBatterySession.m; sourceTree = "<group>"; };
+		460F302A169A37AF0024403E /* Outage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Outage.entitlements; sourceTree = "<group>"; };
 		467C4C0F1693C3F300FC0DD5 /* Outage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Outage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -263,6 +270,8 @@
 		460F301B16993C3F0024403E /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				460F3024169A1FB10024403E /* TOLBatterySession.h */,
+				460F3025169A1FB10024403E /* TOLBatterySession.m */,
 				460F301C16993C3F0024403E /* TOLUserPowerSource.h */,
 				460F301D16993C3F0024403E /* TOLUserPowerSource.m */,
 			);
@@ -272,6 +281,8 @@
 		460F301E16993C3F0024403E /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				460F3027169A1FC40024403E /* _TOLBatterySession.h */,
+				460F3028169A1FC40024403E /* _TOLBatterySession.m */,
 				460F301F16993C3F0024403E /* _TOLUserPowerSource.h */,
 				460F302016993C3F0024403E /* _TOLUserPowerSource.m */,
 			);
@@ -320,6 +331,7 @@
 		467C4C191693C3F300FC0DD5 /* Outage */ = {
 			isa = PBXGroup;
 			children = (
+				460F302A169A37AF0024403E /* Outage.entitlements */,
 				467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */,
 				467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */,
 				467C4C281693C3F300FC0DD5 /* MainMenu.xib */,
@@ -447,6 +459,8 @@
 				460F301916993B190024403E /* DataModel.xcdatamodeld in Sources */,
 				460F302116993C3F0024403E /* TOLUserPowerSource.m in Sources */,
 				460F302216993C3F0024403E /* _TOLUserPowerSource.m in Sources */,
+				460F3026169A1FB10024403E /* TOLBatterySession.m in Sources */,
+				460F3029169A1FC40024403E /* _TOLBatterySession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
