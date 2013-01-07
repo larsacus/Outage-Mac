@@ -555,6 +555,7 @@
 				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-all_load";
 				PRODUCT_NAME = Outage;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -569,6 +570,7 @@
 				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-all_load";
 				PRODUCT_NAME = Outage;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;

@@ -36,7 +36,9 @@ void powerChanged(void *context) {
         
         NSLog(@"AC power lost beginning at %@", self.currentBatterySession.beginTime);
         
-        [self.currentBatterySession.managedObjectContext MR_save];
+        [self.currentBatterySession.managedObjectContext MR_saveInBackgroundCompletion:^{
+            NSLog(@"Done saving");
+        }];
     }
     else if (self.currentBatterySession != nil) {
         NSDate *endDate = [NSDate date];
@@ -51,13 +53,13 @@ void powerChanged(void *context) {
         NSLog(@"AC power resumed. Battery session lasted %li seconds.", secondsThisSession);
         
         //TODO:save incomplete sessions
-        [self.currentBatterySession.managedObjectContext MR_save];
-        
-        NSLog(@"current session: %@", self.currentBatterySession);
-        
-        self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
-        
-        self.currentBatterySession = nil;
+        [self.currentBatterySession.managedObjectContext MR_saveInBackgroundCompletion:^{
+            NSLog(@"saved current session: %@", self.currentBatterySession);
+            
+            self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
+            
+            self.currentBatterySession = nil;
+        }];
     }
 }
 
