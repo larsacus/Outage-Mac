@@ -35,6 +35,8 @@ void powerChanged(void *context) {
         self.currentBatterySession.beginCapacityValue = providingPowerSource.batteryPercentage;
         
         NSLog(@"AC power lost beginning at %@", self.currentBatterySession.beginTime);
+        
+        [self.currentBatterySession.managedObjectContext MR_save];
     }
     else if (self.currentBatterySession != nil) {
         NSDate *endDate = [NSDate date];
@@ -43,14 +45,17 @@ void powerChanged(void *context) {
         NSInteger secondsThisSession = [endDate timeIntervalSinceDate:self.currentBatterySession.beginTime];
         
         TOLPowerSource *sessionPowerSource = [TOLUserPowerSource powerSourceFromUserPowerSource:self.currentBatterySession.powerSource];
+        NSLog(@"Session power source: %@", sessionPowerSource);
         self.currentBatterySession.endCapacityValue = sessionPowerSource.batteryPercentage;
         
         NSLog(@"AC power resumed. Battery session lasted %li seconds.", secondsThisSession);
         
-        self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
-        
         //TODO:save incomplete sessions
         [self.currentBatterySession.managedObjectContext MR_save];
+        
+        NSLog(@"current session: %@", self.currentBatterySession);
+        
+        self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
         
         self.currentBatterySession = nil;
     }
@@ -86,8 +91,10 @@ void powerChanged(void *context) {
 
 - (NSInteger)totalSecondsOnBatteryForAllSessions{
     NSInteger secondsOnBattery = 0;
-    
     NSArray *allBatterySessions = [TOLBatterySession MR_findAll];
+    
+    NSLog(@"All sessions: %@", allBatterySessions);
+    
     for (TOLBatterySession *batterySession in allBatterySessions) {
         NSInteger secondsThisSession = [batterySession.endTime timeIntervalSinceDate:batterySession.beginTime];
         

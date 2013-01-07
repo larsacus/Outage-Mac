@@ -8,7 +8,7 @@
     
     TOLUserPowerSource *ps;
     if (powerSource.hardwareSerialNumber != nil) {
-        ps = [TOLUserPowerSource MR_findFirstByAttribute:@"serialNumber" withValue:powerSource.name];
+        ps = [TOLUserPowerSource MR_findFirstByAttribute:@"serialNumber" withValue:powerSource.hardwareSerialNumber];
     }
     else{
         ps = [TOLUserPowerSource MR_findFirstByAttribute:@"name" withValue:powerSource.name];
@@ -18,6 +18,7 @@
         ps = [self MR_createEntity];
         
         ps.serialNumber = powerSource.hardwareSerialNumber;
+        ps.name = powerSource.name;
         ps.transportTypeValue = powerSource.transportType;
         ps.typeValue = powerSource.type;
     }

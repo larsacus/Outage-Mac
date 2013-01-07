@@ -38,6 +38,7 @@
 		460F302216993C3F0024403E /* _TOLUserPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F302016993C3F0024403E /* _TOLUserPowerSource.m */; };
 		460F3026169A1FB10024403E /* TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3025169A1FB10024403E /* TOLBatterySession.m */; };
 		460F3029169A1FC40024403E /* _TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3028169A1FC40024403E /* _TOLBatterySession.m */; };
+		466D76EB169A764400728E9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C171693C3F300FC0DD5 /* CoreData.framework */; };
 		467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C131693C3F300FC0DD5 /* Cocoa.framework */; };
 		467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */; };
 		467C4C201693C3F300FC0DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C1F1693C3F300FC0DD5 /* main.m */; };
@@ -113,7 +114,6 @@
 		460F3025169A1FB10024403E /* TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLBatterySession.m; sourceTree = "<group>"; };
 		460F3027169A1FC40024403E /* _TOLBatterySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TOLBatterySession.h; sourceTree = "<group>"; };
 		460F3028169A1FC40024403E /* _TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TOLBatterySession.m; sourceTree = "<group>"; };
-		460F302A169A37AF0024403E /* Outage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Outage.entitlements; sourceTree = "<group>"; };
 		467C4C0F1693C3F300FC0DD5 /* Outage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Outage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466D76EB169A764400728E9F /* CoreData.framework in Frameworks */,
 				467C4C311693C80500FC0DD5 /* IOKit.framework in Frameworks */,
 				467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */,
 			);
@@ -331,7 +332,6 @@
 		467C4C191693C3F300FC0DD5 /* Outage */ = {
 			isa = PBXGroup;
 			children = (
-				460F302A169A37AF0024403E /* Outage.entitlements */,
 				467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */,
 				467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */,
 				467C4C281693C3F300FC0DD5 /* MainMenu.xib */,
@@ -518,7 +518,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -542,7 +542,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -556,6 +556,7 @@
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Outage;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -569,6 +570,7 @@
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Outage;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
