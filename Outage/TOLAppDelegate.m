@@ -73,6 +73,8 @@ void powerChanged(void *context) {
     NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
     self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:secondsOnBattery];
     
+    NSLog(@"All sources: %@", [TOLPowerSource allPowerSources]);
+    
     CFRunLoopSourceRef loop = IOPSNotificationCreateRunLoopSource(powerChanged, (__bridge void *)(self));
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode);
     CFRelease(loop);
