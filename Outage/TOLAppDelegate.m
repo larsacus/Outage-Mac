@@ -25,7 +25,9 @@
 void powerChanged(void *context) {
     TOLAppDelegate *self = (__bridge TOLAppDelegate *)(context);
     
-    if (([TOLPowerSource isOnBatteryPower] == YES) &&
+    BOOL isOnBattery = [TOLPowerSource isOnBatteryPower];
+    
+    if ((isOnBattery == YES) &&
         (self.currentBatterySession == nil)) {
         self.currentBatterySession = [TOLBatterySession MR_createEntity];
         self.currentBatterySession.beginTime = [NSDate date];
@@ -40,7 +42,8 @@ void powerChanged(void *context) {
             NSLog(@"Done saving");
         }];
     }
-    else if (self.currentBatterySession != nil) {
+    else if ((isOnBattery == NO) &&
+             (self.currentBatterySession != nil)) {
         NSDate *endDate = [NSDate date];
         self.currentBatterySession.endTime = endDate;
         
