@@ -26,9 +26,10 @@ void powerChanged(void *context) {
     TOLAppDelegate *self = (__bridge TOLAppDelegate *)(context);
     
     BOOL isOnBattery = [TOLPowerSource isOnBatteryPower];
+    BOOL hasActiveBatterySession = (self.currentBatterySession != nil);
     
-    if ((isOnBattery == YES) &&
-        (self.currentBatterySession == nil)) {
+    if (isOnBattery &&
+        (hasActiveBatterySession == NO)) {
         self.currentBatterySession = [TOLBatterySession MR_createEntity];
         self.currentBatterySession.beginTime = [NSDate date];
         
@@ -38,12 +39,19 @@ void powerChanged(void *context) {
         
         NSLog(@"AC power lost beginning at %@", self.currentBatterySession.beginTime);
         
-        [self.currentBatterySession.managedObjectContext MR_saveInBackgroundCompletion:^{
-            NSLog(@"Done saving");
+        [self.currentBatterySession.managedObjectContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Error saving battery session data: %@", error);
+            }
+            else{
+                NSLog(@"Done saving!");
+            }
+            
+            [self notifyPowerLost];
         }];
     }
     else if ((isOnBattery == NO) &&
-             (self.currentBatterySession != nil)) {
+             hasActiveBatterySession) {
         NSDate *endDate = [NSDate date];
         self.currentBatterySession.endTime = endDate;
         
@@ -56,14 +64,41 @@ void powerChanged(void *context) {
         NSLog(@"AC power resumed. Battery session lasted %li seconds.", secondsThisSession);
         
         //TODO:save incomplete sessions
-        [self.currentBatterySession.managedObjectContext MR_saveInBackgroundCompletion:^{
-            NSLog(@"saved current session: %@", self.currentBatterySession);
+        [self.currentBatterySession.managedObjectContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Error saving battery session data: %@", error);
+            }
+            else{
+                NSLog(@"Saved current session! %@", self.currentBatterySession);
+            }
             
-            self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:[self totalSecondsOnBatteryForAllSessions]];
+            NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
+            NSString *timeString = [self timeStringFromSeconds:secondsOnBattery];
+            self.timeOnBatteryLabel.stringValue = timeString;
             
             self.currentBatterySession = nil;
+            [self notifyPowerRestored];
         }];
     }
+    else{
+        [self updateBatteryPercentageIndicator];
+    }
+}
+
+- (void)updateBatteryPercentageIndicator{
+    self.timeRemainingIndicator.floatValue = [[TOLPowerSource upsBatterySource] batteryPercentage]*100.f;
+}
+
+- (void)notifyPowerLost{
+    
+}
+
+- (void)notifyPowerRestored{
+    
+}
+
+- (void)notifySystemShutdown{
+    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -71,7 +106,7 @@ void powerChanged(void *context) {
     // Insert code here to initialize your application
     [MagicalRecord setupAutoMigratingCoreDataStack];
     
-    self.timeRemainingIndicator.floatValue = [[TOLPowerSource upsBatterySource] batteryPercentage]*100.f;
+    [self updateBatteryPercentageIndicator];
     
     NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
     self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:secondsOnBattery];
@@ -81,8 +116,14 @@ void powerChanged(void *context) {
     CFRunLoopSourceRef loop = IOPSNotificationCreateRunLoopSource(powerChanged, (__bridge void *)(self));
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode);
     CFRelease(loop);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willPowerOff:)
+                                                 name:NSWorkspaceWillPowerOffNotification
+                                               object:nil];
 }
 
+#pragma mark - Time Helpers
 - (NSString *)timeStringFromSeconds:(NSInteger)seconds{
     NSDate *modifiedDate = [[NSDate date] dateByAddingTimeInterval:-seconds];
     NSUInteger desiredComponents = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -114,5 +155,18 @@ void powerChanged(void *context) {
 - (void)applicationWillTerminate:(NSNotification *)notification{
     [MagicalRecord cleanUp];
 }
+
+#pragma mark - System Events
+- (void)willPowerOff:(NSNotification *)note{
+    if (self.currentBatterySession != nil) {
+        NSLog(@"System is powering down during an battery session!");
+        [self notifySystemShutdown];
+    }
+    else{
+        NSLog(@"System is powering off without an active battery session");
+    }
+}
+
+
 
 @end
