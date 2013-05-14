@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TOLAppDelegate : NSObject <NSApplicationDelegate>
+@interface TOLAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *timeOnBatteryLabel;
 @property (weak) IBOutlet NSLevelIndicator *timeRemainingIndicator;
+@property (weak) IBOutlet NSTableView *tableView;
 
 @end
