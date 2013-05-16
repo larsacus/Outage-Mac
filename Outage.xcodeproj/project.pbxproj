@@ -16,6 +16,7 @@
 		4672670F17446AA4008DCDD5 /* TOLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672670E17446AA4008DCDD5 /* TOLMainWindowController.m */; };
 		4672671217446AC5008DCDD5 /* TOLMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672671117446AC5008DCDD5 /* TOLMainWindow.m */; };
 		4672671417446AF4008DCDD5 /* TOLMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4672671317446AF4008DCDD5 /* TOLMainWindow.xib */; };
+		4672671717448C20008DCDD5 /* TOLPowerSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672671617448C20008DCDD5 /* TOLPowerSessionManager.m */; };
 		467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C131693C3F300FC0DD5 /* Cocoa.framework */; };
 		467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */; };
 		467C4C201693C3F300FC0DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C1F1693C3F300FC0DD5 /* main.m */; };
@@ -43,6 +44,8 @@
 		4672671017446AC5008DCDD5 /* TOLMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLMainWindow.h; sourceTree = "<group>"; };
 		4672671117446AC5008DCDD5 /* TOLMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLMainWindow.m; sourceTree = "<group>"; };
 		4672671317446AF4008DCDD5 /* TOLMainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TOLMainWindow.xib; sourceTree = "<group>"; };
+		4672671517448C20008DCDD5 /* TOLPowerSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLPowerSessionManager.h; sourceTree = "<group>"; };
+		4672671617448C20008DCDD5 /* TOLPowerSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLPowerSessionManager.m; sourceTree = "<group>"; };
 		467C4C0F1693C3F300FC0DD5 /* Outage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Outage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -165,6 +168,8 @@
 			children = (
 				467C4C251693C3F300FC0DD5 /* TOLAppDelegate.h */,
 				467C4C261693C3F300FC0DD5 /* TOLAppDelegate.m */,
+				4672671517448C20008DCDD5 /* TOLPowerSessionManager.h */,
+				4672671617448C20008DCDD5 /* TOLPowerSessionManager.m */,
 				467C4C281693C3F300FC0DD5 /* MainMenu.xib */,
 				4672670D17446AA4008DCDD5 /* TOLMainWindowController.h */,
 				4672670E17446AA4008DCDD5 /* TOLMainWindowController.m */,
@@ -307,6 +312,7 @@
 				460F3029169A1FC40024403E /* _TOLBatterySession.m in Sources */,
 				4672670F17446AA4008DCDD5 /* TOLMainWindowController.m in Sources */,
 				4672671217446AC5008DCDD5 /* TOLMainWindow.m in Sources */,
+				4672671717448C20008DCDD5 /* TOLPowerSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +411,11 @@
 				OTHER_CFLAGS = "-all_load";
 				PRODUCT_NAME = Outage;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -421,6 +432,11 @@
 				OTHER_CFLAGS = "-all_load";
 				PRODUCT_NAME = Outage;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

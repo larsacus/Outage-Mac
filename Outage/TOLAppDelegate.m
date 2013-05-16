@@ -9,6 +9,8 @@
 #import "TOLAppDelegate.h"
 #import "TOLBatterySession.h"
 #import "TOLMainWindow.h"
+#import "TOLPowerSessionManager.h"
+#import "TOLMainWindowController.h"
 
 static TOLBatterySession *__currentBatterySession;
 
@@ -26,14 +28,9 @@ static TOLBatterySession *__currentBatterySession;
     // Insert code here to initialize your application
     [MagicalRecord setupAutoMigratingCoreDataStack];
     
-    NSNib *windowNib = [[NSNib alloc] initWithNibNamed:NSStringFromClass([TOLMainWindow class]) bundle:nil];
-    NSArray *nibObjects = nil;
-//    [windowNib instantiateWithOwner:self
-//                    topLevelObjects:&nibObjects];
-    [windowNib instantiateNibWithOwner:self
-                       topLevelObjects:&nibObjects];
-    NSWindow *mainWindow = nibObjects[0];
-    [mainWindow makeKeyWindow];
+    [[TOLPowerSessionManager sharedManager] beginMonitoringPowerSupplies];
+    
+    [self.mainWindowController showWindow:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(willPowerOff:)

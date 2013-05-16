@@ -10,4 +10,12 @@
 
 @implementation TOLMainWindowController
 
+- (id)init{
+    self = [super initWithWindowNibName:@"TOLMainWindow"];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

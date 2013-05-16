@@ -1,5 +1,9 @@
 #import "TOLBatterySession.h"
 
+NSString * const kTOLPowerSessionBeganNotification = @"TOLPowerSessionBegan";
+NSString * const kTOLPowerSessionEndedNotification = @"TOLPowerSessionEnded";
+NSString * const kTOLPowerStateChangedNotification = @"TOLPowerStateChanged";
+
 @implementation TOLBatterySession
 
 - (NSTimeInterval)sessionDuration{

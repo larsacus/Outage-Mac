@@ -7,11 +7,11 @@
 //
 
 #import "TOLMainWindow.h"
+#import "TOLBatterySession.h"
 #import "TOLPowerSource.h"
-#import <IOKit/ps/IOPowerSources.h>
 
 @interface TOLMainWindow ()
-@property (strong, nonatomic) TOLBatterySession *currentBatterySession;
+
 @property (nonatomic, copy) NSArray *batterySessions;
 - (NSString *)timeStringFromSeconds:(NSInteger)seconds;
 - (NSInteger)totalSecondsOnBatteryForAllSessions;
@@ -24,103 +24,47 @@
     
     NSLog(@"All sources: %@", [TOLPowerSource allPowerSources]);
     
-    [self updateBatteryPercentageIndicator];
+    [self updateBatteryPercentageIndicator:nil];
     
     NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
     self.timeOnBatteryLabel.stringValue = [self timeStringFromSeconds:secondsOnBattery];
     
-    CFRunLoopSourceRef loop = IOPSNotificationCreateRunLoopSource(powerChanged, (__bridge void *)(self));
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode);
-    CFRelease(loop);
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(batterySessionBegan:)
+     name:kTOLPowerSessionBeganNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(batterySessionEnded:)
+     name:kTOLPowerSessionEndedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(updateBatteryPercentageIndicator:)
+     name:kTOLPowerStateChangedNotification object:nil];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self reloadTableData];
 }
 
-- (void)endBatterySession{
-    NSDate *endDate = [NSDate date];
-    self.currentBatterySession.endTime = endDate;
-    
-    NSInteger secondsThisSession = [endDate timeIntervalSinceDate:self.currentBatterySession.beginTime];
-    
-    TOLPowerSource *sessionPowerSource = [TOLUserPowerSource powerSourceFromUserPowerSource:self.currentBatterySession.powerSource];
-    NSLog(@"Session power source: %@", sessionPowerSource);
-    self.currentBatterySession.endCapacityValue = sessionPowerSource.batteryPercentage;
-    
-    NSLog(@"AC power resumed. Battery session lasted %li seconds.", secondsThisSession);
-    
-    //TODO:save incomplete sessions
-    [self.currentBatterySession.managedObjectContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Error saving battery session data: %@", error);
-        }
-        else{
-            NSLog(@"Saved current session! %@", self.currentBatterySession);
-        }
-        
-        NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
-        NSString *timeString = [self timeStringFromSeconds:secondsOnBattery];
-        self.timeOnBatteryLabel.stringValue = timeString;
-        
-        self.currentBatterySession = nil;
-        [self notifyPowerRestored];
-        
-        [self reloadTableData];
-    }];
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)startBatterySession{
-    self.currentBatterySession = [TOLBatterySession MR_createEntity];
-    self.currentBatterySession.beginTime = [NSDate date];
+- (void)batterySessionBegan:(NSNotification *)note{
     
-    TOLPowerSource *providingPowerSource = [TOLPowerSource providingPowerSource];
-    self.currentBatterySession.powerSource = [TOLUserPowerSource userPowerSourceFromPowerSource:providingPowerSource];
-    self.currentBatterySession.beginCapacityValue = providingPowerSource.batteryPercentage;
-    
-    NSLog(@"AC power lost beginning at %@", self.currentBatterySession.beginTime);
-    
-    [self.currentBatterySession.managedObjectContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Error saving battery session data: %@", error);
-        }
-        else{
-            NSLog(@"Done saving!");
-        }
-        
-        [self notifyPowerLost];
-    }];
 }
 
-void powerChanged(void *context) {
-    TOLMainWindow *self = (__bridge TOLMainWindow *)(context);
+- (void)batterySessionEnded:(NSNotification *)note{
     
-    BOOL isOnBattery = [TOLPowerSource isOnBatteryPower];
-    BOOL hasActiveBatterySession = (self.currentBatterySession != nil);
+    NSInteger secondsOnBattery = [self totalSecondsOnBatteryForAllSessions];
+    NSString *timeString = [self timeStringFromSeconds:secondsOnBattery];
+    self.timeOnBatteryLabel.stringValue = timeString;
     
-    if (isOnBattery &&
-        (hasActiveBatterySession == NO)) {
-        [self startBatterySession];
-    }
-    else if ((isOnBattery == NO) &&
-             hasActiveBatterySession) {
-        [self endBatterySession];
-    }
-    else{
-        [self updateBatteryPercentageIndicator];
-    }
+    [self reloadTableData];
 }
 
-- (void)updateBatteryPercentageIndicator{
+- (void)updateBatteryPercentageIndicator:(NSNotification *)note{
     self.timeRemainingIndicator.floatValue = [[TOLPowerSource upsBatterySource] batteryPercentage]*100.f;
-}
-
-- (void)notifyPowerLost{
-    
-}
-
-- (void)notifyPowerRestored{
-    
 }
 
 - (void)reloadTableData{

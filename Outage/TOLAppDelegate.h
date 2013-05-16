@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TOLMainWindowController;
+
 @interface TOLAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) IBOutlet TOLMainWindowController *mainWindowController;
 
 + (TOLBatterySession *)currentBatterySession;
 
