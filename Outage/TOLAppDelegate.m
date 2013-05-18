@@ -12,6 +12,8 @@
 #import "TOLPowerSessionManager.h"
 #import "TOLMainWindowController.h"
 
+#import <ParseOSX/ParseOSX.h>
+
 static TOLBatterySession *__currentBatterySession;
 
 @interface TOLAppDelegate ()
@@ -27,6 +29,11 @@ static TOLBatterySession *__currentBatterySession;
 {
     // Insert code here to initialize your application
     [MagicalRecord setupAutoMigratingCoreDataStack];
+    
+    NSLog(@"Current hostname: %@", [[NSHost currentHost] name]);
+    
+    [Parse setApplicationId:@"xT2nmVvLDFHg4fdxs84y7EDVeDLq7l84XfHjnkN7"
+                  clientKey:@"CkPmyOon89MZ5BcFdpZ2ocbsdMEZC4ff7PYqDj6R"];
     
     [[TOLPowerSessionManager sharedManager] beginMonitoringPowerSupplies];
     

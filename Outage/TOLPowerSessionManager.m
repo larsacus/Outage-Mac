@@ -10,6 +10,7 @@
 #import "TOLPowerSource.h"
 
 #import <IOKit/ps/IOPowerSources.h>
+#import <ParseOSX/ParseOSX.h>
 
 @interface TOLPowerSessionManager ()
 @property (strong, nonatomic) TOLBatterySession *currentBatterySession;
@@ -57,6 +58,8 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kTOLPowerSessionEndedNotification
                                                             object:sessionPowerSource];
+        
+        [self pushBatterySessionEndedNotification];
     }];
 }
 
@@ -81,6 +84,8 @@
      [[NSNotificationCenter defaultCenter]
       postNotificationName:kTOLPowerSessionBeganNotification
       object:providingPowerSource];
+        
+        [self pushBatterySessionStartedNotification];
     }];
 }
 
@@ -103,6 +108,61 @@ void powerChanged(void *context) {
          postNotificationName:kTOLPowerStateChangedNotification
          object:nil];
     }
+}
+
+#pragma mark - Push Notifications
+- (void)pushGlobalMessageWithAlertText:(NSString *)alertString{
+    NSURL *baseURL = [NSURL URLWithString:@"https://api.parse.com/1/"];
+    NSURL *url = [NSURL URLWithString:@"push" relativeToURL:baseURL];
+    NSMutableURLRequest *pushRequest = [NSMutableURLRequest requestWithURL:url];
+    [pushRequest setHTTPMethod:@"POST"];
+    NSString *parseAppId = @"xT2nmVvLDFHg4fdxs84y7EDVeDLq7l84XfHjnkN7";
+    NSString *parseRestAPIKey = @"R5RwNRZcP3fQX2YUM2QW5upU2vctgkiXgGkXcwlw";
+    
+    NSDictionary *headerFields = @{@"X-Parse-Application-Id": parseAppId,
+                                   @"X-Parse-REST-API-Key": parseRestAPIKey,
+                                   @"Content-Type": @"application/json"};
+    [pushRequest setAllHTTPHeaderFields:headerFields];
+    
+    NSDictionary *pushPayload = @{@"where": @{@"deviceType": @"ios"},
+                                  @"data": @{@"alert":alertString,
+                                             @"sound":@""}};
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:pushPayload
+                                                       options:0
+                                                         error:&error];
+    
+    if (error == nil) {
+        [pushRequest setHTTPBody:jsonData];
+        
+        [NSURLConnection
+         sendAsynchronousRequest:pushRequest
+         queue:[NSOperationQueue mainQueue]
+         completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+             if (error != nil) {
+                 NSLog(@"Error sending push: %@", error);
+             }
+             else{
+                 NSLog(@"Recieved successful response: %@", response);
+             }
+         }];
+    }
+    else{
+        NSLog(@"Error serializing json: %@", error);
+    }
+}
+
+- (void)pushBatterySessionStartedNotification{
+    NSString *alertString = [NSString stringWithFormat:@"The server %@ is now running on battery power!", [[NSHost currentHost] name]];
+    
+    [self pushGlobalMessageWithAlertText:alertString];
+}
+
+- (void)pushBatterySessionEndedNotification{
+    NSString *alertString = [NSString stringWithFormat:@"The server %@ is back on AC power.", [[NSHost currentHost] name]];
+    
+    [self pushGlobalMessageWithAlertText:alertString];
 }
 
 @end

@@ -18,6 +18,16 @@
 		4672671217446AC5008DCDD5 /* TOLMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672671117446AC5008DCDD5 /* TOLMainWindow.m */; };
 		4672671417446AF4008DCDD5 /* TOLMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4672671317446AF4008DCDD5 /* TOLMainWindow.xib */; };
 		4672671717448C20008DCDD5 /* TOLPowerSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672671617448C20008DCDD5 /* TOLPowerSessionManager.m */; };
+		467267191747EC1B008DCDD5 /* ParseOSX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 461884251747EB1300A9F794 /* ParseOSX.framework */; };
+		467267231747EC7B008DCDD5 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671A1747EC7B008DCDD5 /* ApplicationServices.framework */; };
+		467267241747EC7B008DCDD5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671B1747EC7B008DCDD5 /* CFNetwork.framework */; };
+		467267251747EC7B008DCDD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671C1747EC7B008DCDD5 /* CoreGraphics.framework */; };
+		467267261747EC7B008DCDD5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671D1747EC7B008DCDD5 /* CoreLocation.framework */; };
+		467267271747EC7B008DCDD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671E1747EC7B008DCDD5 /* libsqlite3.dylib */; };
+		467267281747EC7B008DCDD5 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672671F1747EC7B008DCDD5 /* libz.1.1.3.dylib */; };
+		467267291747EC7B008DCDD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467267201747EC7B008DCDD5 /* QuartzCore.framework */; };
+		4672672A1747EC7B008DCDD5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467267211747EC7B008DCDD5 /* Security.framework */; };
+		4672672B1747EC7B008DCDD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467267221747EC7B008DCDD5 /* SystemConfiguration.framework */; };
 		467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C131693C3F300FC0DD5 /* Cocoa.framework */; };
 		467C4C1E1693C3F300FC0DD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467C4C1C1693C3F300FC0DD5 /* InfoPlist.strings */; };
 		467C4C201693C3F300FC0DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C1F1693C3F300FC0DD5 /* main.m */; };
@@ -28,6 +38,19 @@
 		467C4C4116968BD000FC0DD5 /* TOLPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 467C4C4016968BD000FC0DD5 /* TOLPowerSource.m */; };
 		6943B579663B47E9B6CC1E95 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E2A6995CDB43A5B9CB76DA /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		467267181747EC15008DCDD5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				467267191747EC1B008DCDD5 /* ParseOSX.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		460F301816993B190024403E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -48,6 +71,15 @@
 		4672671317446AF4008DCDD5 /* TOLMainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TOLMainWindow.xib; sourceTree = "<group>"; };
 		4672671517448C20008DCDD5 /* TOLPowerSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLPowerSessionManager.h; sourceTree = "<group>"; };
 		4672671617448C20008DCDD5 /* TOLPowerSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLPowerSessionManager.m; sourceTree = "<group>"; };
+		4672671A1747EC7B008DCDD5 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		4672671B1747EC7B008DCDD5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4672671C1747EC7B008DCDD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4672671D1747EC7B008DCDD5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4672671E1747EC7B008DCDD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4672671F1747EC7B008DCDD5 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		467267201747EC7B008DCDD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		467267211747EC7B008DCDD5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		467267221747EC7B008DCDD5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		467C4C0F1693C3F300FC0DD5 /* Outage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Outage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467C4C131693C3F300FC0DD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		467C4C161693C3F300FC0DD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -73,6 +105,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467267231747EC7B008DCDD5 /* ApplicationServices.framework in Frameworks */,
+				467267241747EC7B008DCDD5 /* CFNetwork.framework in Frameworks */,
+				467267251747EC7B008DCDD5 /* CoreGraphics.framework in Frameworks */,
+				467267261747EC7B008DCDD5 /* CoreLocation.framework in Frameworks */,
+				467267271747EC7B008DCDD5 /* libsqlite3.dylib in Frameworks */,
+				467267281747EC7B008DCDD5 /* libz.1.1.3.dylib in Frameworks */,
+				467267291747EC7B008DCDD5 /* QuartzCore.framework in Frameworks */,
+				4672672A1747EC7B008DCDD5 /* Security.framework in Frameworks */,
+				4672672B1747EC7B008DCDD5 /* SystemConfiguration.framework in Frameworks */,
 				466D76EB169A764400728E9F /* CoreData.framework in Frameworks */,
 				467C4C311693C80500FC0DD5 /* IOKit.framework in Frameworks */,
 				467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */,
@@ -158,6 +199,15 @@
 		467C4C121693C3F300FC0DD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4672671A1747EC7B008DCDD5 /* ApplicationServices.framework */,
+				4672671B1747EC7B008DCDD5 /* CFNetwork.framework */,
+				4672671C1747EC7B008DCDD5 /* CoreGraphics.framework */,
+				4672671D1747EC7B008DCDD5 /* CoreLocation.framework */,
+				4672671E1747EC7B008DCDD5 /* libsqlite3.dylib */,
+				4672671F1747EC7B008DCDD5 /* libz.1.1.3.dylib */,
+				467267201747EC7B008DCDD5 /* QuartzCore.framework */,
+				467267211747EC7B008DCDD5 /* Security.framework */,
+				467267221747EC7B008DCDD5 /* SystemConfiguration.framework */,
 				467C4C301693C80500FC0DD5 /* IOKit.framework */,
 				467C4C131693C3F300FC0DD5 /* Cocoa.framework */,
 				467C4C151693C3F300FC0DD5 /* Other Frameworks */,
@@ -227,6 +277,7 @@
 				467C4C0B1693C3F300FC0DD5 /* Sources */,
 				467C4C0C1693C3F300FC0DD5 /* Frameworks */,
 				467C4C0D1693C3F300FC0DD5 /* Resources */,
+				467267181747EC15008DCDD5 /* CopyFiles */,
 				1A2B1AC33FDB41A6AA80E25D /* Copy Pods Resources */,
 			);
 			buildRules = (
