@@ -12,6 +12,7 @@
 		460F302216993C3F0024403E /* _TOLUserPowerSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F302016993C3F0024403E /* _TOLUserPowerSource.m */; };
 		460F3026169A1FB10024403E /* TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3025169A1FB10024403E /* TOLBatterySession.m */; };
 		460F3029169A1FC40024403E /* _TOLBatterySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 460F3028169A1FC40024403E /* _TOLBatterySession.m */; };
+		461884261747EB1300A9F794 /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461884251747EB1300A9F794 /* ParseOSX.framework */; };
 		466D76EB169A764400728E9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467C4C171693C3F300FC0DD5 /* CoreData.framework */; };
 		4672670F17446AA4008DCDD5 /* TOLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672670E17446AA4008DCDD5 /* TOLMainWindowController.m */; };
 		4672671217446AC5008DCDD5 /* TOLMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672671117446AC5008DCDD5 /* TOLMainWindow.m */; };
@@ -39,6 +40,7 @@
 		460F3025169A1FB10024403E /* TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLBatterySession.m; sourceTree = "<group>"; };
 		460F3027169A1FC40024403E /* _TOLBatterySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TOLBatterySession.h; sourceTree = "<group>"; };
 		460F3028169A1FC40024403E /* _TOLBatterySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TOLBatterySession.m; sourceTree = "<group>"; };
+		461884251747EB1300A9F794 /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseOSX.framework; sourceTree = "<group>"; };
 		4672670D17446AA4008DCDD5 /* TOLMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLMainWindowController.h; sourceTree = "<group>"; };
 		4672670E17446AA4008DCDD5 /* TOLMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOLMainWindowController.m; sourceTree = "<group>"; };
 		4672671017446AC5008DCDD5 /* TOLMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOLMainWindow.h; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				467C4C311693C80500FC0DD5 /* IOKit.framework in Frameworks */,
 				467C4C141693C3F300FC0DD5 /* Cocoa.framework in Frameworks */,
 				6943B579663B47E9B6CC1E95 /* libPods.a in Frameworks */,
+				461884261747EB1300A9F794 /* ParseOSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,7 @@
 		460F2FBF16993AB80024403E /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				461884241747EB1300A9F794 /* Parse */,
 				467C4C3E16968BD000FC0DD5 /* TOLPowerSource */,
 			);
 			name = Vendor;
@@ -120,6 +124,15 @@
 				460F302016993C3F0024403E /* _TOLUserPowerSource.m */,
 			);
 			path = Machine;
+			sourceTree = "<group>";
+		};
+		461884241747EB1300A9F794 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				461884251747EB1300A9F794 /* ParseOSX.framework */,
+			);
+			name = Parse;
+			path = Vendor/Parse;
 			sourceTree = "<group>";
 		};
 		467C4C041693C3F300FC0DD5 = {
@@ -404,6 +417,10 @@
 			baseConfigurationReference = 79A225DA8A9E4B5CB925F166 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor/Parse\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
@@ -425,6 +442,10 @@
 			baseConfigurationReference = 79A225DA8A9E4B5CB925F166 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor/Parse\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Outage/Outage-Prefix.pch";
 				INFOPLIST_FILE = "Outage/Outage-Info.plist";
